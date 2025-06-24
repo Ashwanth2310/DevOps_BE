@@ -2,8 +2,8 @@ name: Build Docker Image
 
 on:
   push:
-    branches:
-      - '**'
+    paths:
+      - 'DevOps_BE/**'
 
 jobs:
   build:
@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: List files for debugging
+        run: |
+          ls -l
+          ls -l DevOps_BE
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
