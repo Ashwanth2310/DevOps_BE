@@ -28,9 +28,15 @@ jobs:
         run: |
           python -m pytest tests/unit
 
-      - name: Run integration tests
+      - name: Run integration tests and generate HTML report
         run: |
-          python -m pytest tests/integration
+          python -m pytest tests/integration --html=integration-report.html
+
+      - name: Upload integration test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-report
+          path: integration-report.html
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
