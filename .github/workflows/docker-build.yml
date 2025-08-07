@@ -53,4 +53,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/devops_be-meshdefend-devops:latest
+          tags: ghcr.io/${{ toLower(github.repository_owner) }}/devops_be-meshdefend-devops:latest
