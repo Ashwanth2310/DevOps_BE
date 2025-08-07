@@ -41,15 +41,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to DockerHub
+      - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Build and push Docker image to GitHub Packages
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/meshdefend-devops:latest
+          push: true
+          tags: ghcr.io/${{ github.repository }}/meshdefend-devops:latest
