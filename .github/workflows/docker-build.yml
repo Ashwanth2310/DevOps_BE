@@ -53,4 +53,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/ashwanth2310/devops_be-meshdefend-devops:latest
+          tags: ghcr.io/ashwanth2310/meshdefend-devops:latest
